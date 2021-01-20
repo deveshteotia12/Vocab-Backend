@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express=require('express')
 const bodyParser=require('body-parser')
 const cors=require('cors')
@@ -39,8 +40,8 @@ app.post('/wordSubmit',(req,res)=>{
     }
     axios.get(URL,{
         headers:{
-            'app_id': 'd31544ff',
-            'app_key': '2f8b7268cc44afea4e2ba8f3e4f3616d'
+            'app_id': process.env.APP_ID,
+            'app_key': process.env.APP_KEY
         }
     }).then((response)=> response.data.results)
     .then((resu)=>resu[0].lexicalEntries)
